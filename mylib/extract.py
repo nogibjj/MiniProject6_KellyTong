@@ -9,13 +9,13 @@ import pandas as pd
 
 def extract(
     url="""
-    https://github.com/fivethirtyeight/data/blob/master/tennis-time/serve_times.csv?raw=true 
+    https://raw.githubusercontent.com/fivethirtyeight/data/master/college-majors/grad-students.csv 
     """,
     url2="""
-    https://github.com/fivethirtyeight/data/blob/master/tennis-time/events_time.csv?raw=true
+    https://raw.githubusercontent.com/fivethirtyeight/data/master/college-majors/all-ages.csv
     """,
-    file_path="data/serve_times.csv",
-    file_path2="data/event_times.csv",
+    file_path="data/grad_students.csv",
+    file_path2="data/all-ages.csv",
     directory="data",
 ):
     """Extract a url to a file path"""
