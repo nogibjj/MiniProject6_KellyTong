@@ -9,7 +9,7 @@ LOG_FILE = "query_log.md"
 
 
 def log_query(query, result="none"):
-"""adds to a query markdown file"""
+    """adds to a query markdown file"""
     with open(LOG_FILE, "a") as file:
         file.write(f"```sql\n{query}\n```\n\n")
         file.write(f"```response from databricks\n{result}\n```\n\n")
