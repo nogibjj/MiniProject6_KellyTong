@@ -38,12 +38,12 @@ def test_general_query():
             "main.py",
             "general_query",
             """SELECT t1.server, t1.opponent,
-                AVG(t1.seconds_before_next_point) as avg_seconds_before_next_point,
-                COUNT(*) as total_matches_played
+                AVG(t1.Grad_employed) as avg_grad_employed,
+                COUNT(*) as total_grad_employed
             FROM default.grad-studentsdb t1
             JOIN default.all-agesdb t2 ON t1.id = t2.id
             GROUP BY t1.server, t1.opponent
-            ORDER BY total_matches_played DESC
+            ORDER BY total_grad_employed DESC
             LIMIT 10""",
         ],
         capture_output=True,

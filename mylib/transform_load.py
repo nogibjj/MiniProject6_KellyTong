@@ -32,14 +32,28 @@ def load(dataset="data/grad-students.csv", dataset2="data/all-ages.csv"):
             c.execute(
                 """
                 CREATE TABLE IF NOT EXISTS grad-studentsDB (
-                    major string,
-                    major_category string,
-                    grad_total int,
-                    grad_samples_size int,
+                    Major_code int,
+                    Major string,
+                    Major_category string,
+                    Grad_total int,
+                    Grad_sample_size int,
                     Grad_employed int,
+                    Grad_full_time_year_round int, 
                     Grad_unemployed int,
+                    Grad_unemployment_rate int, 
                     Grad_median int,
+                    Grad_P25 int,
+                    Grad_P75 int, 
                     Nongrad_total int
+                    Nongrad_employed int,
+                    Nongrad_full_time_year_round int, 
+                    Nongrad_unemployed int, 
+                    Nongrad_unemployment_rate int, 
+                    Nongrad_median int, 
+                    Nongrad_P25 int, 
+                    Nongrad_P75 int, 
+                    Grad_share int, 
+                    Grad_premium int
                 )
             """
             )
@@ -54,17 +68,23 @@ def load(dataset="data/grad-students.csv", dataset2="data/all-ages.csv"):
             c.execute(
                 """
                 CREATE TABLE IF NOT EXISTS all-agesDB (
+                    Major_code int,
                     Major string,
                     Major_category string,
                     Total int,
+                    Employed int, 
+                    Employed_full_time_year_round int, 
                     Unemployed int,
-                    Median int
+                	Unemployment_rate int, 
+                    Median int, 
+                    P25th int, 
+                    P75th int
                 )
                 """
             )
             for _, row in df2.iterrows():
                 convert = (_,) + tuple(row)
-                c.execute(f"INSERT INTO EventTimesDB VALUES {convert}")
+                c.execute(f"INSERT INTO all-agesDB VALUES {convert}")
         c.close()
 
     return "success"
