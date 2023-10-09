@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 
 # load the csv file and insert into databricks
-def load(dataset="data/serve_times.csv", dataset2="data/event_times.csv"):
+def load(dataset="data/grad-students.csv", dataset2="data/all-ages.csv"):
     """Transforms and Loads data into the local databricks database"""
     df = pd.read_csv(dataset, delimiter=",", skiprows=1)
     df2 = pd.read_csv(dataset2, delimiter=",", skiprows=1)
@@ -23,15 +23,15 @@ def load(dataset="data/serve_times.csv", dataset2="data/event_times.csv"):
     ) as connection:
         c = connection.cursor()
         # INSERT TAKES TOO LONG
-        # c.execute("DROP TABLE IF EXISTS ServeTimesDB")
+        # c.execute("DROP TABLE IF EXISTS grad-studentsDB")
         c.execute("SHOW TABLES FROM default LIKE 'serve*'")
         result = c.fetchall()
         # takes too long so not dropping anymore
-        # c.execute("DROP TABLE IF EXISTS EventTimesDB")
+        # c.execute("DROP TABLE IF EXISTS all-agesDB")
         if not result:
             c.execute(
                 """
-                CREATE TABLE IF NOT EXISTS ServeTimesDB (
+                CREATE TABLE IF NOT EXISTS grad-studentsDB (
                     id int,
                     server string,
                     seconds_before_next_point int,
@@ -46,14 +46,14 @@ def load(dataset="data/serve_times.csv", dataset2="data/event_times.csv"):
             # insert
             for _, row in df.iterrows():
                 convert = (_,) + tuple(row)
-                c.execute(f"INSERT INTO ServeTimesDB VALUES {convert}")
+                c.execute(f"INSERT INTO grad-studentsDB VALUES {convert}")
         c.execute("SHOW TABLES FROM default LIKE 'event*'")
         result = c.fetchall()
-        # c.execute("DROP TABLE IF EXISTS EventTimesDB")
+        # c.execute("DROP TABLE IF EXISTS all-agesDB")
         if not result:
             c.execute(
                 """
-                CREATE TABLE IF NOT EXISTS EventTimesDB (
+                CREATE TABLE IF NOT EXISTS all-agesDB (
                     id int,
                     tournament string,
                     surface string,
