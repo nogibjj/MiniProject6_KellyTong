@@ -1,6 +1,5 @@
 """
-Extract a dataset from a URL like Kaggle or data.gov. 
-JSON or CSV formats tend to work well
+Extract a dataset from a URL. 
 """
 import os
 import requests
