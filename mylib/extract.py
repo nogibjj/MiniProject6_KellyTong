@@ -14,7 +14,7 @@ def extract(
     url2="""
     https://raw.githubusercontent.com/fivethirtyeight/data/master/college-majors/all-ages.csv
     """,
-    file_path="data/grad_students.csv",
+    file_path="data/grad-students.csv",
     file_path2="data/all-ages.csv",
     directory="data",
 ):
