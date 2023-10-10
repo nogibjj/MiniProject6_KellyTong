@@ -86,7 +86,12 @@ def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
             )
             for _, row in df2.iterrows():
                 convert = (_,) + tuple(row)
-                c.execute(f"INSERT INTO all_agesDB VALUES {convert}")
+                try:
+                    c.execute(f"INSERT INTO grad_studentsDB VALUES {convert}")
+                except Exception as e:
+                    print(f"Problematic row: {convert}")
+                    print(f"Exception: {e}")
+                    break  # Stop after the first error for easier debugging
         c.close()
 
     return "success"
