@@ -61,7 +61,13 @@ def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
             # insert
             for _, row in df.iterrows():
                 convert = (_,) + tuple(row)
-                c.execute(f"INSERT INTO grad_studentsDB VALUES {convert}")
+                try:
+                    c.execute(f"INSERT INTO grad_studentsDB VALUES {convert}")
+                except Exception as e:
+                    print(f"Problematic row: {convert}")
+                    print(f"Exception: {e}")
+                    break  # Stop after the first error for easier debugging
+                #c.execute(f"INSERT INTO grad_studentsDB VALUES {convert}")
         c.execute("SHOW TABLES FROM default LIKE 'event*'")
         result = c.fetchall()
         # c.execute("DROP TABLE IF EXISTS all_agesDB")
@@ -87,7 +93,7 @@ def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
             for _, row in df2.iterrows():
                 convert = (_,) + tuple(row)
                 try:
-                    c.execute(f"INSERT INTO grad_studentsDB VALUES {convert}")
+                    c.execute(f"INSERT INTO all_agesDB VALUES {convert}")
                 except Exception as e:
                     print(f"Problematic row: {convert}")
                     print(f"Exception: {e}")
