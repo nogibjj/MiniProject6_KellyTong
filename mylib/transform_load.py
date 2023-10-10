@@ -32,6 +32,7 @@ def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
             c.execute(
                 """
                 CREATE TABLE IF NOT EXISTS grad_studentsDB (
+                    Rank int,
                     Major_code int,
                     Major string,
                     Major_category string,
@@ -68,6 +69,7 @@ def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
             c.execute(
                 """
                 CREATE TABLE IF NOT EXISTS all_agesDB (
+                    Rank int,
                     Major_code int,
                     Major string,
                     Major_category string,
