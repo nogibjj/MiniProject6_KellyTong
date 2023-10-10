@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 
 # load the csv file and insert into databricks
-def load(dataset="data/grad-students.csv", dataset2="data/all-ages.csv"):
+def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
     """Transforms and Loads data into the local databricks database"""
     df = pd.read_csv(dataset, delimiter=",", skiprows=1)
     df2 = pd.read_csv(dataset2, delimiter=",", skiprows=1)
@@ -23,15 +23,15 @@ def load(dataset="data/grad-students.csv", dataset2="data/all-ages.csv"):
     ) as connection:
         c = connection.cursor()
         # INSERT TAKES TOO LONG
-        # c.execute("DROP TABLE IF EXISTS grad-studentsDB")
+        # c.execute("DROP TABLE IF EXISTS grad_studentsDB")
         c.execute("SHOW TABLES FROM default LIKE 'serve*'")
         result = c.fetchall()
         # takes too long so not dropping anymore
-        # c.execute("DROP TABLE IF EXISTS all-agesDB")
+        # c.execute("DROP TABLE IF EXISTS all_agesDB")
         if not result:
             c.execute(
                 """
-                CREATE TABLE IF NOT EXISTS ‘grad-studentsDB’ (
+                CREATE TABLE IF NOT EXISTS grad_studentsDB (
                     Major_code int,
                     Major string,
                     Major_category string,
@@ -44,7 +44,7 @@ def load(dataset="data/grad-students.csv", dataset2="data/all-ages.csv"):
                     Grad_median int,
                     Grad_P25 int,
                     Grad_P75 int, 
-                    Nongrad_total int
+                    Nongrad_total int,
                     Nongrad_employed int,
                     Nongrad_full_time_year_round int, 
                     Nongrad_unemployed int, 
@@ -60,14 +60,14 @@ def load(dataset="data/grad-students.csv", dataset2="data/all-ages.csv"):
             # insert
             for _, row in df.iterrows():
                 convert = (_,) + tuple(row)
-                c.execute(f"INSERT INTO grad-studentsDB VALUES {convert}")
+                c.execute(f"INSERT INTO grad_studentsDB VALUES {convert}")
         c.execute("SHOW TABLES FROM default LIKE 'event*'")
         result = c.fetchall()
-        # c.execute("DROP TABLE IF EXISTS all-agesDB")
+        # c.execute("DROP TABLE IF EXISTS all_agesDB")
         if not result:
             c.execute(
                 """
-                CREATE TABLE IF NOT EXISTS ‘all-agesDB’ (
+                CREATE TABLE IF NOT EXISTS all_agesDB (
                     Major_code int,
                     Major string,
                     Major_category string,
@@ -84,7 +84,7 @@ def load(dataset="data/grad-students.csv", dataset2="data/all-ages.csv"):
             )
             for _, row in df2.iterrows():
                 convert = (_,) + tuple(row)
-                c.execute(f"INSERT INTO all-agesDB VALUES {convert}")
+                c.execute(f"INSERT INTO all_agesDB VALUES {convert}")
         c.close()
 
     return "success"
