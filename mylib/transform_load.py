@@ -14,6 +14,8 @@ def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
     df2 = pd.read_csv(dataset2, delimiter=",", skiprows=1)
     load_dotenv()
     server_h = os.getenv("SERVER_HOSTNAME")
+    server_h = server_h.strip('"')
+    print(f"Server Hostname: {server_h}")
     access_token = os.getenv("ACCESS_TOKEN")
     http_path = os.getenv("HTTP_PATH")
     with sql.connect(
@@ -32,7 +34,6 @@ def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
             c.execute(
                 """
                 CREATE TABLE IF NOT EXISTS grad_studentsDB (
-                    Rank int,
                     Major_code int,
                     Major string,
                     Major_category string,
@@ -41,7 +42,7 @@ def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
                     Grad_employed int,
                     Grad_full_time_year_round int, 
                     Grad_unemployed int,
-                    Grad_unemployment_rate int, 
+                    Grad_unemployment_rate float, 
                     Grad_median int,
                     Grad_P25 int,
                     Grad_P75 int, 
@@ -49,12 +50,12 @@ def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
                     Nongrad_employed int,
                     Nongrad_full_time_year_round int, 
                     Nongrad_unemployed int, 
-                    Nongrad_unemployment_rate int, 
+                    Nongrad_unemployment_rate float, 
                     Nongrad_median int, 
                     Nongrad_P25 int, 
                     Nongrad_P75 int, 
-                    Grad_share int, 
-                    Grad_premium int
+                    Grad_share float, 
+                    Grad_premium float
                 )
             """
             )
@@ -62,7 +63,7 @@ def load(dataset="data/grad_students.csv", dataset2="data/all_ages.csv"):
             for _, row in df.iterrows():
                 convert = (_,) + tuple(row)
                 try:
-                    c.execute(f"INSERT INTO grad_studentsDB VALUES {convert}")
+                    c.execute(f"INSERT INTO grad_studentsDB (Major_code, Major, Major_category, Grad_total, Grad_sample_size, Grad_employed, Grad_full_time_year_round, Grad_unemployed, Grad_unemployment_rate, Grad_median, Grad_P25, Grad_P75, Nongrad_total, Nongrad_employed, Nongrad_full_time_year_round, Nongrad_unemployed, Nongrad_unemployment_rate, Nongrad_median, Nongrad_P25, Nongrad_P75, Grad_share, Grad_premium) VALUES {convert}")
                 except Exception as e:
                     print(f"Problematic row: {convert}")
                     print(f"Exception: {e}")
