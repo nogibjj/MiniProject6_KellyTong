@@ -14,7 +14,6 @@ def log_query(query, result="none"):
         file.write(f"```sql\n{query}\n```\n\n")
         file.write(f"```response from databricks\n{result}\n```\n\n")
 
-
 def general_query(query):
     """runs a query a user inputs"""
 
