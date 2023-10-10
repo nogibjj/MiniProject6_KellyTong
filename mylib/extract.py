@@ -13,8 +13,8 @@ def extract(
     url2="""
     https://github.com/fivethirtyeight/data/blob/master/college-majors/all-ages.csv?raw=true 
     """,
-    file_path="data/grad-students.csv",
-    file_path2="data/all-ages.csv",
+    file_path="data/grad_students.csv",
+    file_path2="data/all_ages.csv",
     directory="data",
 ):
     """Extract a url to a file path"""
