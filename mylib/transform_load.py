@@ -48,7 +48,7 @@ def load(dataset="data/women_stem.csv", dataset2="data/all_ages.csv"):
             )
             # insert
             for _, row in df.iterrows():
-                convert = (_,) + tuple(row)
+                convert = tuple(row)
                 try:
                     c.execute(f"INSERT INTO women_stemDB VALUES {convert}")
                 except Exception as e:
