@@ -8,12 +8,12 @@ import pandas as pd
 
 def extract(
     url="""
-    https://github.com/fivethirtyeight/data/blob/master/college-majors/grad-students.csv?raw=true 
+    https://github.com/fivethirtyeight/data/blob/master/college-majors/women-stem.csv?raw=true 
     """,
     url2="""
     https://github.com/fivethirtyeight/data/blob/master/college-majors/all-ages.csv?raw=true 
     """,
-    file_path="data/grad_students.csv",
+    file_path="data/women_stem.csv",
     file_path2="data/all_ages.csv",
     directory="data",
 ):
