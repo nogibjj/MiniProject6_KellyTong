@@ -37,13 +37,12 @@ def test_general_query():
             "python",
             "main.py",
             "general_query",
-            """SELECT t1.server, t1.opponent,
-                AVG(t1.Grad_employed) as avg_grad_employed,
-                COUNT(*) as total_grad_employed
-            FROM default.grad-studentsdb t1
-            JOIN default.all-agesdb t2 ON t1.id = t2.id
-            GROUP BY t1.server, t1.opponent
-            ORDER BY total_grad_employed DESC
+            """SELECT Major, Total, Women,
+            MIN(Women) AS Min_Women_major, MAX(Women) AS MAX_Women_major
+            FROM default.women_stemDB
+            JOIN default.all_agesdb
+            GROUP BY Major
+            ORDER BY Min_Women_Major DESC
             LIMIT 10""",
         ],
         capture_output=True,
