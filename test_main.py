@@ -37,12 +37,10 @@ def test_general_query():
             "python",
             "main.py",
             "general_query",
-            """SELECT Major, Total, Women,
-            MIN(Women) AS Min_Women_major, MAX(Women) AS MAX_Women_major
-            FROM default.women_stemDB
-            JOIN default.all_agesdb
-            GROUP BY Major
-            ORDER BY Min_Women_Major DESC
+            """SELECT Major, SUM(Total) as SumTotal, SUM(Women) as SumWomen 
+            FROM women_stemDB 
+            GROUP BY Major 
+            ORDER BY SumTotal DESC 
             LIMIT 10""",
         ],
         capture_output=True,
