@@ -65,23 +65,13 @@ The building process starts with installing the packages.
 
 <img width="820" alt="截屏2023-10-02 23 40 02" src="https://github.com/nogibjj/MiniProject5_KellyTong/assets/142815940/ba733b30-5da5-4f44-b2c1-237813b0597c">
 
-`make extract`
+`make extract` `make transform_load` `make query`
 
-**make extract**
+**make extrac, make transform_load, make query**
 
-<img width="600" alt="截屏2023-10-02 23 35 30" src="https://github.com/nogibjj/MiniProject5_KellyTong/assets/142815940/3c644d65-ea4a-4e7a-ae3e-fcc405432b60">
 
-`make transform_load`
+<img width="1195" alt="extract, transform_load and query" src="https://github.com/nogibjj/MiniProject6_KellyTong/assets/142815940/b117da7a-29ab-4251-b8cf-9a0294128cff">
 
-**make transform_load**
-
-<img width="257" alt="截屏2023-10-02 23 34 17" src="https://github.com/nogibjj/MiniProject5_KellyTong/assets/142815940/12959752-a54c-41cd-ae19-4c701eec414a">
-
-`make query`
-
-**make query**
-
-<img width="206" alt="截屏2023-10-02 23 34 21" src="https://github.com/nogibjj/MiniProject5_KellyTong/assets/142815940/9bd70437-5329-47bb-9614-431981068365">
 
 `make lint`
 
@@ -92,14 +82,24 @@ The building process starts with installing the packages.
 
 **Make test** calls the command python -m pytest -vv --cov=main test_*.py
 
-<img width="600" alt="截屏2023-10-02 23 35 30" src="https://github.com/nogibjj/MiniProject5_KellyTong/assets/142815940/44f27727-bcde-4e38-a6fb-df691f22033e">
+<img width="1128" alt="make test" src="https://github.com/nogibjj/MiniProject6_KellyTong/assets/142815940/fc23924e-98d7-4aec-a629-338f9e45dc26">
+
 
 `make format`
 
 **Make format** calls the command black *.py
 
-<img width="299" alt="make format" src="https://github.com/Kelly0604/miniproject2/assets/142815940/41df08ca-d8f7-4b62-b88b-1f39f1a7d858">
+<img width="236" alt="make format" src="https://github.com/nogibjj/MiniProject6_KellyTong/assets/142815940/00967237-209c-4f89-96e1-cedc49c276c4">
+
+
+`make generate_and_push` `make deploy`
+**Make generate_and push, make deploy** 
+
+<img width="744" alt="generate_and _push and deploy" src="https://github.com/nogibjj/MiniProject6_KellyTong/assets/142815940/2fa8b869-5cdf-4727-b486-8dc1a430bed1">
+
 
 ## Visualization for how the process work
 
 ![1_xHSzARQPes6JhHe_jNGRdg](https://github.com/nogibjj/MiniProject5_KellyTong/assets/142815940/57a7ce64-dab8-40c3-a066-87fe9862dd41)
+
+p.s. For specific query log please see query_log.md in the repository. 
