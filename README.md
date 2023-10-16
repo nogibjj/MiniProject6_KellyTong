@@ -3,10 +3,18 @@
 This repository is for IDS706 mini project week 6. 
 
 ## Purpose 
-    This repository is for building an ETL-Query pipeline. 
-    Github actions such as extract, transform and load, and query are included. 
-    A local csv file is extracted from a url and then cleaned and loaded into a .db file. 
-    SQLlite is used to query it. 
+    This repository is for building an ETL-Query pipeline to perform Github actions 
+    such as extract, transform and load, and query. 
+    A Cloud Database (MySQL) is hosted in Azure and connected to this Github repository 
+    through secret variables access_tokens, host_name and HTTP_path. 
+    Two csv files are extracted from two source url. 
+    Then they are cleaned, transformed and loaded into 2 .db files. 
+    Complex Query is performed to join the two datasets based on the desired order and
+    their common variables. Joined table will be generated automatically. 
+    In these case, the two datasets (csv files) are extracted into women_stem.db and 
+    all_ages.db which store the information about major and employment. 
+    This Github action allows extract, transform and load. and query to be performed 
+    seperately in codespace. It also enables flexibility in performing these in single command.
     
 ## Important Things included are:
 - ``.devcontainer`` includes a Dockerfile and devcontainer.json.
@@ -26,8 +34,8 @@ This repository is for IDS706 mini project week 6.
 
 - ``test_main.py`` is a test file for main.py
 
-- ``mylib`` includes ``extract.py`` ``transform_load.py`` and ``query.py`` which are used to extract
-  a csv from an url, clean it and return a db file.
+- ``mylib`` includes ``_init_.py````extract.py`` ``transform_load.py`` and ``query.py`` which are used to extract
+  a csv from an url, clean it and return a db file, and perform complex query.
 
 ## Github actions
 Status badges for CI.yml
