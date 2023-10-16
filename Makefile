@@ -43,4 +43,4 @@ transform_load:
 	python main.py transform_load
 
 query:
-	python main.py general_query "SELECT Major, Total, Women FROM women_stemDB GROUP BY Major , state ORDER BY Total DESC LIMIT 10"
+	python main.py general_query "SELECT Major, Total, Women FROM women_stemDB GROUP BY Major , ORDER BY Total DESC LIMIT 10"
