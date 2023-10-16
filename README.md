@@ -42,16 +42,13 @@ Status badges for CI.yml
 `CI.yml`
 [![CI](https://github.com/nogibjj/MiniProject6_KellyTong/actions/workflows/CI.yml/badge.svg)](https://github.com/nogibjj/MiniProject6_KellyTong/actions/workflows/CI.yml)
 
-## Results
-By running command: python main.py
+## Result Query
 
-`extract`
+Query is run with the following commands. 
 
-<img width="466" alt="截屏2023-10-02 23 32 09" src="https://github.com/nogibjj/MiniProject5_KellyTong/assets/142815940/ff1ce85c-030f-4762-85d2-408fba3d9a37">
+<img width="583" alt="Query" src="https://github.com/nogibjj/MiniProject6_KellyTong/assets/142815940/5ad28a32-e702-4e70-b427-6e2b4f00b67a">
 
-`transform_load`
-`query`
-<img width="775" alt="截屏2023-10-02 23 27 28" src="https://github.com/nogibjj/MiniProject5_KellyTong/assets/142815940/14e70102-7963-40e4-883d-d3c697ef6984">
+Results can be found in the [query_log.md](https://github.com/nogibjj/MiniProject6_KellyTong/blob/main/query_log.md)
 
 
 ## Building Process
@@ -67,7 +64,7 @@ The building process starts with installing the packages.
 
 `make extract` `make transform_load` `make query`
 
-**make extrac, make transform_load, make query**
+**make extract, make transform_load, make query**
 
 
 <img width="1195" alt="extract, transform_load and query" src="https://github.com/nogibjj/MiniProject6_KellyTong/assets/142815940/b117da7a-29ab-4251-b8cf-9a0294128cff">
@@ -93,6 +90,7 @@ The building process starts with installing the packages.
 
 
 `make generate_and_push` `make deploy`
+
 **Make generate_and push, make deploy** 
 
 <img width="744" alt="generate_and _push and deploy" src="https://github.com/nogibjj/MiniProject6_KellyTong/assets/142815940/2fa8b869-5cdf-4727-b486-8dc1a430bed1">
